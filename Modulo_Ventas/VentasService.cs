@@ -15,25 +15,29 @@ namespace Taller_Poo.Modulo_Ventas
             Console.Write("Ingrese documento del cliente: ");
             documento = Console.ReadLine();
 
-            validarDoc();
+            validarDoc(documento);
         }
 
-        public void validarDoc()
+        
+
+        private void validarDoc(string documento)
         {
-            Console.Clear();
             ClienteService.metodos metodos = new ClienteService.metodos();
-            Console.Write("\nDigite la cédula de la persona que desea buscar, en caso de querer ver todos los clientes digite 'todos': ");
-            string documento = (Console.ReadLine().ToLower());
-            if (documento == "todo")
+            var consulta = (from clientes in metodos.listaClientes select clientes).ToList();
+            bool encontradoConsulta = false;
+            foreach (var persona in consulta)
             {
-                var consulta = (from clientes in metodos.listaClientes select clientes).ToList();
-                foreach (var persona in consulta)
+                if (persona.cedula == documento)
                 {
-                    Console.WriteLine($"\nCedula: {persona.cedula} \nNombre: {persona.nombre} \ndirección: {persona.direccion} \nteléfono: {persona.telefono}\n");
+                    Console.WriteLine($"\nCédula: {persona.cedula}\nNombre: {persona.nombre}\nDirección: {persona.direccion}\nTelefono: {persona.telefono}");
+                    encontradoConsulta = true;
                 }
             }
-            else
-                metodos.ConsultarCliente(documento);
+            if (encontradoConsulta == false)
+            {
+                Console.Write("\nEl número de cedula del cliente es incorrecto o no existe.\n");
+                SolicitarDocumento();
+            }
         }
     }
 }

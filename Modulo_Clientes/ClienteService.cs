@@ -19,6 +19,7 @@ namespace ClienteService
                 telefono = telefono
             });
         }
+
         public void ConsultarCliente(string documento)
         {
             var consulta = (from clientes in listaClientes select clientes).ToList();

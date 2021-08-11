@@ -1,0 +1,16 @@
+C:\Users\oscar\Documents\.Net\TALLER_POO\Taller_Poo\bin\Debug\net5.0\Taller_Poo.exe
+C:\Users\oscar\Documents\.Net\TALLER_POO\Taller_Poo\bin\Debug\net5.0\Taller_Poo.deps.json
+C:\Users\oscar\Documents\.Net\TALLER_POO\Taller_Poo\bin\Debug\net5.0\Taller_Poo.runtimeconfig.json
+C:\Users\oscar\Documents\.Net\TALLER_POO\Taller_Poo\bin\Debug\net5.0\Taller_Poo.runtimeconfig.dev.json
+C:\Users\oscar\Documents\.Net\TALLER_POO\Taller_Poo\bin\Debug\net5.0\Taller_Poo.dll
+C:\Users\oscar\Documents\.Net\TALLER_POO\Taller_Poo\bin\Debug\net5.0\ref\Taller_Poo.dll
+C:\Users\oscar\Documents\.Net\TALLER_POO\Taller_Poo\bin\Debug\net5.0\Taller_Poo.pdb
+C:\Users\oscar\Documents\.Net\TALLER_POO\Taller_Poo\obj\Debug\net5.0\Taller_Poo.csproj.AssemblyReference.cache
+C:\Users\oscar\Documents\.Net\TALLER_POO\Taller_Poo\obj\Debug\net5.0\Taller_Poo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\oscar\Documents\.Net\TALLER_POO\Taller_Poo\obj\Debug\net5.0\Taller_Poo.AssemblyInfoInputs.cache
+C:\Users\oscar\Documents\.Net\TALLER_POO\Taller_Poo\obj\Debug\net5.0\Taller_Poo.AssemblyInfo.cs
+C:\Users\oscar\Documents\.Net\TALLER_POO\Taller_Poo\obj\Debug\net5.0\Taller_Poo.csproj.CoreCompileInputs.cache
+C:\Users\oscar\Documents\.Net\TALLER_POO\Taller_Poo\obj\Debug\net5.0\Taller_Poo.dll
+C:\Users\oscar\Documents\.Net\TALLER_POO\Taller_Poo\obj\Debug\net5.0\ref\Taller_Poo.dll
+C:\Users\oscar\Documents\.Net\TALLER_POO\Taller_Poo\obj\Debug\net5.0\Taller_Poo.pdb
+C:\Users\oscar\Documents\.Net\TALLER_POO\Taller_Poo\obj\Debug\net5.0\Taller_Poo.genruntimeconfig.cache

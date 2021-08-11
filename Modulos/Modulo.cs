@@ -11,7 +11,7 @@ namespace Taller_Poo.Modulos
 {
     class Modulos
     {
-        
+        public string respuesta;
         public void inicio()
         {
             int numM;
@@ -27,15 +27,29 @@ namespace Taller_Poo.Modulos
             {
                 case 1:
                     modulos.ModCliente();
+                    menuP();
                     break;
                 case 2:
                     modulos.ModProducto();
+                    menuP();
                     break;
                 case 3:
                     modulos.ModVentas();
+                    menuP();
                     break;
             }
         }
+
+        public void menuP()
+        {
+            Console.Write("¿Desea realizar alguna acción en otro módulo?");
+            respuesta = Console.ReadLine();
+            while (respuesta.Equals("si"))
+            {
+                inicio();
+            }
+        }
+
         public void ModCliente(){
             ClienteService.metodos metodos = new ClienteService.metodos();
 
