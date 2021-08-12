@@ -4,35 +4,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-namespace ClienteService
+namespace Modulo_Clientes.ClienteService
 {
-    public class metodos{
+    public class ClienteService{
         
         //Creación de lista.
-        public List<Cliente> listaClientes = new List<Cliente>();
-        public void AgregarCliente(string cedula, string nombre, string direccion, string telefono)
+        private List<Cliente> listaClientes = new List<Cliente>();
+        public void AgregarCliente(Cliente cliente)
         {
-            listaClientes.Add(new Cliente{
-                cedula = cedula, 
-                nombre = nombre, 
-                direccion = direccion, 
-                telefono = telefono
-            });
+            listaClientes.Add(cliente);
         }
+
+        public bool ConsultarDocumento(string documento)
+        {
+            var consulta = listaClientes.FirstOrDefault(cliente=>cliente.cedula.Equals(documento));
+            if (consulta != null)//Si se encuentra registrado el cliente nos retornará un true, este para verificar si existe
+                return true;
+            return false;
+        }
+
+     
 
         public void ConsultarCliente(string documento)
         {
-            var consulta = (from clientes in listaClientes select clientes).ToList();
-            bool encontradoConsulta = false;
-            foreach (var persona in consulta){
-                if(persona.cedula == documento){
-                    Console.WriteLine($"\nCédula: {persona.cedula}\nNombre: {persona.nombre}\nDirección: {persona.direccion}\nTelefono: {persona.telefono}");
-                    encontradoConsulta = true;
-                }
-            }
-            if(encontradoConsulta == false){
-                    Console.Write("\nNo se encontró una persona con ese número de documento\n");
-            }
+            var cliente = listaClientes.FirstOrDefault(cliente => cliente.cedula.Equals(documento));
+
+            if (cliente != null)
+                Console.WriteLine($"\nCédula: {cliente.cedula}\nNombre: {cliente.nombre}\nDirección: {cliente.direccion}\nTelefono: {cliente.telefono}");
+            else
+                Console.Write("\nNo se encontró una persona con ese número de documento\n");
+            
+        }
+
+        public void validarDoc(string documento)
+        {
+            var cliente = listaClientes.FirstOrDefault(cliente => cliente.cedula.Equals(documento));
+
+            if (cliente != null)
+                Console.WriteLine($"\nCédula: {cliente.cedula}\nNombre: {cliente.nombre}\nDirección: {cliente.direccion}\nTelefono: {cliente.telefono}");
+            else
+                Console.Write("\nnnnnn\n");
         }
 
         public void ModificarCliente(string cedula)
