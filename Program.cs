@@ -1,5 +1,6 @@
 ﻿using Modulo_Clientes;
 using Modulo_Clientes.ClienteService;
+using Modulo_Productos;
 using System;
 using System.Linq;
 using Taller_Poo.Modulo_Ventas;
@@ -10,8 +11,9 @@ namespace Inicio
     {
         public VentasService venta = new VentasService();
         public ClienteService clienteService = new ClienteService();
-        public ProductoService.ProductoService lista = new ProductoService.ProductoService();
+        public ProductoService.ProductoService productoService = new ProductoService.ProductoService();
         public string respuesta;
+        public string documento;
         static void Main(string[] args)
         {
             Inicio inicio = new Inicio();
@@ -179,7 +181,13 @@ namespace Inicio
                             Precio = float.Parse(Console.ReadLine());
                             Console.Write("Ingrese la cantidad: ");
                             Cantidad = int.Parse(Console.ReadLine());
-                            lista.Agregar(Nombre, Precio, Cantidad, Codigo);
+                            productoService.AgregarProducto(new Producto
+                            {
+                                nombre = Nombre,
+                                precio = Precio,
+                                cantidad = Cantidad,
+                                codigo = Codigo
+                            });
                             Codigo++;
                             Console.Write("¿Quieres agregar otro producto? R// ");
                             preg = Console.ReadLine();
@@ -191,7 +199,7 @@ namespace Inicio
                         {
                             Console.WriteLine("¿Cual producto desea inspeccionar?");
                             cod = int.Parse(Console.ReadLine());
-                            lista.Mostrar(cod);
+                            productoService.Mostrar(cod);
                             Console.WriteLine("¿Quieres inspeccionar otro producto?");
                             preg = Console.ReadLine();
                         } while (preg.Equals("si"));
@@ -202,7 +210,7 @@ namespace Inicio
                         {
                             Console.WriteLine("¿Cual producto desea eliminar?");
                             cod = int.Parse(Console.ReadLine());
-                            lista.Eliminar(cod);
+                            productoService.Eliminar(cod);
                             Console.WriteLine("¿Quieres eliminar otro producto?");
                             preg = Console.ReadLine();
                         } while (preg.Equals("si"));
@@ -213,7 +221,7 @@ namespace Inicio
                         {
                             Console.WriteLine("¿Cual porducto desea editar?");
                             cod = int.Parse(Console.ReadLine());
-                            lista.Modificar(cod);
+                            productoService.Modificar(cod);
                             Console.WriteLine("¿Quieres editar otro producto?");
                             preg = Console.ReadLine();
                         } while (preg.Equals("si"));
@@ -228,7 +236,14 @@ namespace Inicio
         }
         public void ModVentas()
         {
-            venta.SolicitarDocumento();
+            SolicitarDocumento();
+        }
+        public void SolicitarDocumento()
+        {
+            Console.Write("Ingrese documento del cliente: ");
+            documento = Console.ReadLine();
+
+            clienteService.validarDoc(documento);
         }
     }
 }

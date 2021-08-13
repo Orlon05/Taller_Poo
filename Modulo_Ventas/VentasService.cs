@@ -11,13 +11,7 @@ namespace Taller_Poo.Modulo_Ventas
     {
         private string documento;
         public ClienteService clienteService = new ClienteService();
-        public void SolicitarDocumento()
-        {
-            Console.Write("Ingrese documento del cliente: ");
-            documento = Console.ReadLine();
-
-            clienteService.validarDoc(documento);
-        }
+        
 
         
 

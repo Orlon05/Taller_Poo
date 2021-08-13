@@ -10,18 +10,29 @@ namespace ProductoService
     public class ProductoService
     {
         public List<Producto> listaProducto = new List<Producto>();
-        public void Agregar(string Nombre, float Precio, int Cantidad, int Codigo)
+        public void AgregarProducto(Producto producto)
         {
-            listaProducto.Add(new Producto { nombre = Nombre, precio = Precio, cantidad = Cantidad, codigo = Codigo });
+            listaProducto.Add(producto);
         }
 
-        public void Mostrar(int cod)
+       /* public void Mostrar(int cod)
         {
             var consulta = (from productos in listaProducto where productos.codigo == cod select productos).ToList();
             foreach (var producto in consulta)
             {
                 Console.WriteLine($"Nombre: {producto.nombre} Precio: {producto.precio}");
             }
+        }*/
+
+        public void Mostrar(int cod)
+        {
+            var producto = listaProducto.FirstOrDefault(producto => producto.codigo.Equals(cod));
+
+            if (producto != null)
+                Console.WriteLine($"\nCódigo: {producto.codigo}\nNombre: {producto.nombre}\nPrecio: {producto.precio}\n");
+            else
+                Console.Write("\nNo se encontró una producto con ese código.\n");
+
         }
 
         public void Modificar(int cod)
