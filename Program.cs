@@ -156,23 +156,20 @@ namespace Inicio
             float Precio;
             int Cantidad;
             int Codigo = 1, cod;
-            Console.WriteLine("¡Bienvenidos!");
-            Console.WriteLine();
-            Console.WriteLine("A continuaciòn le daremos las opciones disponibles: ");
-            Console.WriteLine();
+            Console.Clear();
+                Console.Write("--------------------------------------------\n---------------MÓDULO PRODUCTO---------------\n--------------------------------------------\n\n");
+                Console.Write("---------------BIENVENIDO AL MÓDULO PRODUCTO, SELECCIONE SU OPERACIÓN POR FAVOR---------------");
             do
             {
-                Console.WriteLine("1. para agregar un producto");
-                Console.WriteLine("2. para inspeccionar un producto");
-                Console.WriteLine("3. para eliminar un producto");
-                Console.WriteLine("4. para modificar un producto");
+                Console.Write("\n¿Qué operación desea ejecutar en el modulo de clientes?: \nIntroducir: 1 \nConsultar: 2 \nEditar: 3 \nEliminar: 4 \n\nRespuesta: ");
                 Console.WriteLine();
                 Console.Write("Ingrese el numero de la funciòn que dessea realizar: ");
                 v = int.Parse(Console.ReadLine());
                 switch (v)
                 {
                     case 1:
-                        Console.WriteLine("----- AGREGAR -----");
+                        Console.Clear();
+                        Console.Write("---------------AGREGAR UN PRODUCTO---------------\n");
                         do
                         {
                             Console.Write("Ingrese el nombre: ");
@@ -194,7 +191,8 @@ namespace Inicio
                         } while (preg.Equals("si"));
                         break;
                     case 2:
-                        Console.WriteLine("----- MOSTRAR -----");
+                        Console.Clear();
+                        Console.Write("---------------MOSTRAR PRODUCTO---------------\n");
                         do
                         {
                             Console.WriteLine("¿Cual producto desea inspeccionar?");
@@ -205,7 +203,8 @@ namespace Inicio
                         } while (preg.Equals("si"));
                         break;
                     case 3:
-                        Console.WriteLine("----- ELIMINAR -----");
+                        Console.Clear();
+                        Console.Write("---------------ELIMINACIÓN DE PRODUCTO---------------\n");
                         do
                         {
                             Console.WriteLine("¿Cual producto desea eliminar?");
@@ -216,10 +215,11 @@ namespace Inicio
                         } while (preg.Equals("si"));
                         break;
                     case 4:
-                        Console.WriteLine("----- MODIFICAR -----");
+                        Console.Clear();
+                        Console.Write("---------------MODICIFAR UN PRODUCTO---------------\n");
                         do
                         {
-                            Console.WriteLine("¿Cual porducto desea editar?");
+                            Console.WriteLine("¿Cual producto desea editar?");
                             cod = int.Parse(Console.ReadLine());
                             productoService.Modificar(cod);
                             Console.WriteLine("¿Quieres editar otro producto?");
@@ -233,6 +233,7 @@ namespace Inicio
                 Console.WriteLine("¿Quieres continuar con otra funciòn?");
                 preg = Console.ReadLine();
             } while (preg.Equals("si"));
+            Console.Clear();
         }
         public void ModVentas()
         {
