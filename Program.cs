@@ -195,10 +195,10 @@ namespace Inicio
                         Console.Write("---------------MOSTRAR PRODUCTO---------------\n");
                         do
                         {
-                            Console.WriteLine("¿Cual producto desea inspeccionar?");
+                            Console.Write("¿Cual producto desea inspeccionar? R// ");
                             cod = int.Parse(Console.ReadLine());
                             productoService.Mostrar(cod);
-                            Console.WriteLine("¿Quieres inspeccionar otro producto?");
+                            Console.WriteLine("¿Quieres inspeccionar otro producto? R// ");
                             preg = Console.ReadLine();
                         } while (preg.Equals("si"));
                         break;
@@ -207,10 +207,10 @@ namespace Inicio
                         Console.Write("---------------ELIMINACIÓN DE PRODUCTO---------------\n");
                         do
                         {
-                            Console.WriteLine("¿Cual producto desea eliminar?");
+                            Console.Write("¿Cual producto desea eliminar? R// ");
                             cod = int.Parse(Console.ReadLine());
                             productoService.Eliminar(cod);
-                            Console.WriteLine("¿Quieres eliminar otro producto?");
+                            Console.Write("¿Quieres eliminar otro producto? R// ");
                             preg = Console.ReadLine();
                         } while (preg.Equals("si"));
                         break;
@@ -219,10 +219,10 @@ namespace Inicio
                         Console.Write("---------------MODICIFAR UN PRODUCTO---------------\n");
                         do
                         {
-                            Console.WriteLine("¿Cual producto desea editar?");
+                            Console.Write("¿Cual producto desea editar? R// ");
                             cod = int.Parse(Console.ReadLine());
                             productoService.Modificar(cod);
-                            Console.WriteLine("¿Quieres editar otro producto?");
+                            Console.WriteLine("¿Quieres editar otro producto? R// ");
                             preg = Console.ReadLine();
                         } while (preg.Equals("si"));
                         break;
@@ -230,7 +230,7 @@ namespace Inicio
                         Console.WriteLine("La funciòn agregada no existe");
                         break;
                 }
-                Console.WriteLine("¿Quieres continuar con otra funciòn?");
+                Console.Write("¿Quieres continuar con otra funciòn? R// ");
                 preg = Console.ReadLine();
             } while (preg.Equals("si"));
             Console.Clear();
