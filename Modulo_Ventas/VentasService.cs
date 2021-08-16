@@ -12,6 +12,7 @@ namespace Taller_Poo.Modulo_Ventas
         private List<Venta> listaVentas = new List<Venta>();
         public string aggProducto,cc,clie;
         public float totalPI;
+        public DateTime fecha;
         public void AgregarVenta(Venta venta)
         {
             listaVentas.Add(venta);
@@ -23,7 +24,7 @@ namespace Taller_Poo.Modulo_Ventas
             aggProducto = Console.ReadLine();
         }
 
-        public void imprimirFactura(int codFactura)
+        public void imprimirEncabezadoFactura(int codFactura)
         {
             Console.Write("---------------------FACTURA---------------------\n");
            
@@ -31,17 +32,13 @@ namespace Taller_Poo.Modulo_Ventas
             Console.WriteLine($"Número de factura: {(codFactura-1)}.");
             foreach (var ventas in consulta)
             {
-                clie = ventas.cedulaCliente;
+                
                 cc = ventas.nombreCliente;
+                totalPI = ventas.totalPagar;
+                fecha = ventas.fechaFactura;
 
             }
-            foreach (var ventas in consulta)
-            {
-                //Console.WriteLine($"Número de factura: {ventas.codigoFactura}.");
-                Console.WriteLine($"\n{ventas.cantidadProducto}     {ventas.nombreProducto}      {ventas.precioProducto}\n");
-                totalPI = ventas.totalPagar;
-            }
-            Console.WriteLine($"\nTOTAL A PAGAR: {totalPI}");
+            Console.WriteLine($"\nFecha: {fecha}     Cedula cliente: {cc}     Total a Pagar: {totalPI.ToString("N0")}");
 
 
         }
@@ -53,28 +50,28 @@ namespace Taller_Poo.Modulo_Ventas
                 return true;
             return false;
         }
-        public void BuscaFactura(int numFactura)
+        public void imprimirDetalleFactura(int numFactura)
         {
             Console.Write("---------------------FACTURA---------------------\n");
 
             var consulta = (from ventas in listaVentas where ventas.codigoFactura == (numFactura) select ventas).ToList();
-            Console.WriteLine($"Número de factura: {(numFactura)}.");
+            
             foreach (var ventas in consulta)
             {
                 clie = ventas.cedulaCliente;
                 cc = ventas.nombreCliente;
+                fecha = ventas.fechaFactura;
 
             }
-            Console.WriteLine($"{clie}     {cc}");
+            Console.WriteLine($"Número de factura: {(numFactura)}      Fecha factura: {fecha}.\n{cc}     {clie}.");
+
             foreach (var ventas in consulta)
             {
                 //Console.WriteLine($"Número de factura: {ventas.codigoFactura}.");
                 Console.WriteLine($"\n{ventas.cantidadProducto}     {ventas.nombreProducto}      {ventas.precioProducto}\n");
                 totalPI = ventas.totalPagar;
             }
-            Console.WriteLine($"\nTOTAL A PAGAR: {totalPI}");
-
-
+            Console.WriteLine($"\nTOTAL A PAGAR: {totalPI.ToString("N0")}");
         }
 
     }

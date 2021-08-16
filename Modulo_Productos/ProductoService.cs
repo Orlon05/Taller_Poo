@@ -34,7 +34,7 @@ namespace ProductoService
             var producto = listaProducto.FirstOrDefault(producto => producto.codigo.Equals(cod));
 
             if (producto != null)
-                Console.WriteLine($"\nC�digo: {producto.codigo}\nNombre: {producto.nombre}\nPrecio: {producto.precio}\nCantidad: {producto.cantidad}\n");
+                Console.WriteLine($"\nC�digo: {producto.codigo}\nNombre: {producto.nombre}\nPrecio: {(producto.precio).ToString("N0")}\nCantidad: {producto.cantidad}\n");
             else
                 Console.Write("\nNo se encontr� una producto con ese c�digo.\n");
 
@@ -45,7 +45,7 @@ namespace ProductoService
             var consulta = (from productos in listaProducto where productos.codigo == cod select productos).ToList();
             foreach (var producto in consulta)
             {
-                Console.WriteLine($"Nombre: {producto.nombre} Precio: {producto.precio} Cantidad: {producto.cantidad} ");
+                Console.WriteLine($"Nombre: {producto.nombre} Precio: {(producto.precio).ToString("N0")} Cantidad: {producto.cantidad} ");
                 listaProducto.Remove(producto);
             }
             Console.Write("Ingrese el nuevo nombre: ");

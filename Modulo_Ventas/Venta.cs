@@ -10,6 +10,8 @@ namespace Taller_Poo.Modulo_Ventas
     {
         public int codigoFactura { get; set; }
 
+        public DateTime fechaFactura { get; set; }
+
         public string nombreProducto { get; set; }
         public float precioProducto { get; set; }
         public float totalPagar { get; set; }

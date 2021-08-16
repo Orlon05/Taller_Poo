@@ -18,6 +18,7 @@ namespace Inicio
         public string respuesta, documento,respuestaRV,respuestaV, resp = "0";
         public int codigoP, cantidadProduc, codFactura = 1,numM, opcionVenta,numFactura;
         public float total;
+        public DateTime fecha;
 
 
         static void Main(string[] args)
@@ -362,7 +363,7 @@ namespace Inicio
 
             if ((VentasService.ConsultarCodigoFactura(numFactura)) == true)
             {
-                VentasService.BuscaFactura(numFactura);
+                VentasService.imprimirDetalleFactura(numFactura);
             }
             else
             {
@@ -422,8 +423,10 @@ namespace Inicio
 
         public void aggVenta()
         {
+            fecha = DateTime.Now;
             VentasService.AgregarVenta(new Venta
             {
+                fechaFactura = fecha,
                 codigoFactura = codFactura,
                 cedulaCliente = clienteService.cedulaClie,
                 nombreCliente = clienteService.nombreClie,
@@ -451,7 +454,7 @@ namespace Inicio
             else
             {
                 total = productoService.total;
-                VentasService.imprimirFactura(codFactura);
+                VentasService.imprimirEncabezadoFactura(codFactura);
             }
         }
         public void validarCanti(int cantidadProduc, int codigoP)
