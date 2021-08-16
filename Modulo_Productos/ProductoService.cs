@@ -10,6 +10,11 @@ namespace ProductoService
     public class ProductoService
     {
         public List<Producto> listaProducto = new List<Producto>();
+        public bool codiProduc;
+        public string nombreProduc;
+        public float precioProduc, total, pagar;
+        public int cantidadProduc, codigoProduc, cantProduc, codigoProducto;
+
         public void AgregarProducto(Producto producto)
         {
             listaProducto.Add(producto);
@@ -29,7 +34,7 @@ namespace ProductoService
             var producto = listaProducto.FirstOrDefault(producto => producto.codigo.Equals(cod));
 
             if (producto != null)
-                Console.WriteLine($"\nCódigo: {producto.codigo}\nNombre: {producto.nombre}\nPrecio: {producto.precio}\n");
+                Console.WriteLine($"\nCódigo: {producto.codigo}\nNombre: {producto.nombre}\nPrecio: {producto.precio}\nCantidad: {producto.cantidad}\n");
             else
                 Console.Write("\nNo se encontró una producto con ese código.\n");
 
@@ -61,5 +66,39 @@ namespace ProductoService
                 listaProducto.Remove(producto);
             }
         }
+
+        public void validarCod(int codigoP)
+        {
+            var producC = listaProducto.FirstOrDefault(producto => producto.codigo.Equals(codigoP));
+
+            
+            if (producC != null)
+            {
+                codiProduc = true;
+                nombreProduc = producC.nombre;
+                precioProduc = producC.precio;
+                cantProduc = producC.cantidad;
+                codigoProducto = producC.codigo;
+                
+            }
+            else
+                codiProduc = false;
+
+        }
+
+        public void cambiarCant(int codigoP, int cantidadProduc)
+        {
+            var consulta = (from productos in listaProducto where productos.codigo == codigoP select productos).ToList();
+
+            foreach (var producto in listaProducto)
+            {
+                if (producto.codigo == codigoP)
+                {
+                    producto.cantidad = (producto.cantidad) - cantidadProduc;
+                    total = total + (producto.precio * cantidadProduc);
+                }
+            }
+        }
+
     }
 }

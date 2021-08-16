@@ -12,8 +12,12 @@ namespace Inicio
         public VentasService venta = new VentasService();
         public ClienteService clienteService = new ClienteService();
         public ProductoService.ProductoService productoService = new ProductoService.ProductoService();
-        public string respuesta;
-        public string documento;
+        public VentasService VentasService = new VentasService();
+        public string respuesta, documento,respuestaRV,respuestaV;
+        public int codigoP, cantidadProduc, codFactura = 1,numM, opcionVenta,numFactura;
+        public float total;
+
+
         static void Main(string[] args)
         {
             Inicio inicio = new Inicio();
@@ -32,13 +36,18 @@ namespace Inicio
 
         public void inicio()
         {
-            int numM;
+            Console.Clear();
+            
             Console.WriteLine("\n" + DateTime.Now);
 
             Console.WriteLine("\nInicio\n");
             Console.Write("1) Módulo de Clientes.\n2) Módulo de Productos.\n3) Módulo de Venta.\n4) Módulo de Reportes.\n5) Módulo de Configuración.\n\nSeleccione el numero del módulo al que desea ingresar: ");
             numM = int.Parse(Console.ReadLine());
+            switchnumM(numM);
+        }
 
+        public void switchnumM(int numM)
+        {
             switch (numM)
             {
                 case 1:
@@ -53,9 +62,18 @@ namespace Inicio
                     ModVentas();
                     menuP();
                     break;
+                default:
+                    intenteNuevamente();
+                    break;
             }
         }
 
+        public void intenteNuevamente()
+        {
+            Console.Write("La opción ingresada no existe, intente nuevamente: ");
+            numM = int.Parse(Console.ReadLine());
+            switchnumM(numM);
+        }
         public void ModCliente()
         {
             string Operacion = "";
@@ -237,14 +255,178 @@ namespace Inicio
         }
         public void ModVentas()
         {
+            Console.Clear();
+            Console.Write("--------------------------------------------\n---------------MÓDULO VENTAS Y FACTURACIÓN---------------\n--------------------------------------------\n\n");
+            Console.Write("\n1) Realizar una venta.\n2) Buscar factura.\n  Ingrese la opción ala que quiere acceder: ");
+            opcionVenta = int.Parse(Console.ReadLine());
+            switchVentas(opcionVenta);
             SolicitarDocumento();
         }
+
+        public void switchVentas(int opcionVenta)
+        {
+            switch (opcionVenta)
+            {
+                case 1:
+                    Console.Clear();
+                    Console.WriteLine("---------------MÓDULO VENTA---------------");
+                    SolicitarDocumento();
+                    Console.Write("\n¿Desea realizar otra venta? ");
+                    respuestaRV = Console.ReadLine();
+                    if (respuestaRV.Equals("si"))
+                    {
+                        Console.Clear();
+                        Console.WriteLine("---------------MÓDULO VENTA---------------");
+                        SolicitarDocumento();
+                    }
+                   
+                    break;
+                case 2:
+                    Console.WriteLine("---------------MÓDULO BUSCAR FACTURA---------------");
+                    BuscarFactura();
+
+                    Console.Write("\n¿Desea realizar otra busqueda? ");
+                    respuestaRV = Console.ReadLine();
+                    if (respuestaRV.Equals("si"))
+                    {
+                        Console.Clear();
+                        Console.WriteLine("---------------MÓDULO BUSCAR FACTURA---------------");
+                        BuscarFactura();
+                    }
+            
+                    break;
+                default:
+                    intenteOpcion();
+                    break;
+            }
+            Console.Write("\n¿Desea realizar otra opción en el módulo de venta y facturación? ");
+            respuestaV = Console.ReadLine();
+
+            if (respuestaV.Equals("si"))
+            {
+                ModVentas();
+            }
+
+            menuP();
+
+        }
+
+        public void BuscarFactura()
+        {
+            Console.Write("Número de factura: ");
+            numFactura = int.Parse(Console.ReadLine());
+            VentasService.ConsultarCodigoFactura(numFactura);
+
+            if ((VentasService.ConsultarCodigoFactura(numFactura)) == true)
+            {
+                VentasService.BuscaFactura(numFactura);
+            }
+            else
+            {
+                Console.Write("El número de factura no existe. Vuelva a intentarlo:\n");
+                BuscarFactura();
+            }
+        }
+
+        public void intenteOpcion()
+        {
+            Console.Write("La opción ingresada no existe, intente nuevamente: ");
+            opcionVenta = int.Parse(Console.ReadLine());
+            switchVentas(opcionVenta);
+        }
+
         public void SolicitarDocumento()
         {
             Console.Write("Ingrese documento del cliente: ");
             documento = Console.ReadLine();
 
             clienteService.validarDoc(documento);
+            if ((clienteService.document) == true)
+            {
+                SolicitarCodigo();
+            }
+            else
+            {
+                Console.Write("El documento ingresado no existe.\n");
+                SolicitarDocumento();
+            }
         }
+
+        public void SolicitarCodigo()
+        {
+            Console.Write("Ingrese código del producto: ");
+            codigoP = int.Parse(Console.ReadLine());
+
+            productoService.validarCod(codigoP);
+            if ((productoService.codiProduc) == true)
+            {
+                SolicitarCanti();
+            }
+            else
+            {
+                SolicitarCodigo();
+            }
+
+        }
+
+        public void SolicitarCanti()
+        {
+            Console.Write("Ingrese la catidad de producto que desea llevar: ");
+            cantidadProduc = int.Parse(Console.ReadLine());
+
+            validarCanti(cantidadProduc, codigoP);
+        }
+
+        public void aggVenta()
+        {
+            VentasService.AgregarVenta(new Venta
+            {
+                codigoFactura = codFactura,
+                cedulaCliente = clienteService.cedulaClie,
+                nombreCliente = clienteService.nombreClie,
+                direccionCliente = clienteService.direccionClie,
+                telefonoCliente = clienteService.telefonoClie,
+                codigoProducto = productoService.codigoProducto,
+                nombreProducto = productoService.nombreProduc,
+                precioProducto = productoService.precioProduc,
+                cantidadProducto = cantidadProduc,
+                totalPagar = productoService.total
+            });
+            codFactura = codFactura + 1;
+            VentasService.otroProducto();
+            aggOtroProducto();
+        }
+
+        public void aggOtroProducto()
+        {
+            if (VentasService.aggProducto.Equals("si"))
+            {
+                codFactura = codFactura - 1;
+
+                SolicitarCodigo();
+            }
+            else
+            {
+                total = productoService.total;
+                VentasService.imprimirFactura(codFactura);
+            }
+        }
+        public void validarCanti(int cantidadProduc, int codigoP)
+        {
+            if (cantidadProduc <= productoService.cantProduc)
+            {
+                productoService.cambiarCant(codigoP, cantidadProduc);
+                aggVenta();
+            }else
+            {
+                Console.Write("La cantidad que ingresa excede la cantidad del producto, intente nuevamente: \n");
+                SolicitarCanti();
+
+            }
+        }
+
+
+        
+
     }
 }

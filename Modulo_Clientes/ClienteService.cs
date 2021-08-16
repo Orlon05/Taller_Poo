@@ -10,6 +10,8 @@ namespace Modulo_Clientes.ClienteService
         
         //Creación de lista.
         private List<Cliente> listaClientes = new List<Cliente>();
+        public bool document;
+        public string cedulaClie, nombreClie, direccionClie, telefonoClie;
         public void AgregarCliente(Cliente cliente)
         {
             listaClientes.Add(cliente);
@@ -22,8 +24,6 @@ namespace Modulo_Clientes.ClienteService
                 return true;
             return false;
         }
-
-     
 
         public void ConsultarCliente(string documento)
         {
@@ -41,9 +41,16 @@ namespace Modulo_Clientes.ClienteService
             var cliente = listaClientes.FirstOrDefault(cliente => cliente.cedula.Equals(documento));
 
             if (cliente != null)
-                Console.WriteLine($"\nCédula: {cliente.cedula}\nNombre: {cliente.nombre}\nDirección: {cliente.direccion}\nTelefono: {cliente.telefono}");
+            {
+                document = true;
+                cedulaClie = cliente.cedula;
+                nombreClie = cliente.nombre;
+                direccionClie = cliente.direccion;
+                telefonoClie = cliente.telefono;
+            }
             else
-                Console.Write("\nnnnnn\n");
+                document = false;
+
         }
 
         public void ModificarCliente(string cedula)

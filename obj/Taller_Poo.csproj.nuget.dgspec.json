@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\oscar\\Documents\\.Net\\TALLER_POO\\Taller_Poo\\Taller_Poo.csproj": {}
+    "C:\\Users\\oscar\\Documents\\.Net\\TALLER_POO\\Taller_Poo\\Taller_Poo.csproj": {}
   },
   "projects": {
-    "c:\\Users\\oscar\\Documents\\.Net\\TALLER_POO\\Taller_Poo\\Taller_Poo.csproj": {
+    "C:\\Users\\oscar\\Documents\\.Net\\TALLER_POO\\Taller_Poo\\Taller_Poo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\oscar\\Documents\\.Net\\TALLER_POO\\Taller_Poo\\Taller_Poo.csproj",
+        "projectUniqueName": "C:\\Users\\oscar\\Documents\\.Net\\TALLER_POO\\Taller_Poo\\Taller_Poo.csproj",
         "projectName": "Taller_Poo",
-        "projectPath": "c:\\Users\\oscar\\Documents\\.Net\\TALLER_POO\\Taller_Poo\\Taller_Poo.csproj",
+        "projectPath": "C:\\Users\\oscar\\Documents\\.Net\\TALLER_POO\\Taller_Poo\\Taller_Poo.csproj",
         "packagesPath": "C:\\Users\\oscar\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\oscar\\Documents\\.Net\\TALLER_POO\\Taller_Poo\\obj\\",
+        "outputPath": "C:\\Users\\oscar\\Documents\\.Net\\TALLER_POO\\Taller_Poo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
