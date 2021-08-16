@@ -1,10 +1,9 @@
 ﻿using Modulo_Clientes;
 using Modulo_Clientes.ClienteService;
 using Modulo_Productos;
+using Taller_Poo.Modulo_Ventas;
 using System;
 using System.Linq;
-using Taller_Poo.Modulo_Ventas;
-using Modulo_Reportes;
 
 namespace Inicio
 {
@@ -13,10 +12,9 @@ namespace Inicio
         public VentasService venta = new VentasService();
         public ClienteService clienteService = new ClienteService();
         public ProductoService.ProductoService productoService = new ProductoService.ProductoService();
-        public ReportesService reportesService = new ReportesService();
         public VentasService VentasService = new VentasService();
         public string respuesta, documento,respuestaRV,respuestaV, resp = "0";
-        public int codigoP, cantidadProduc, codFactura = 1,numM, opcionVenta,numFactura;
+        public int codigoP, cantidadProduc, codFactura = 1,numM, opcionVenta,numFactura,codigo = 1;
         public float total;
         public DateTime fecha;
 
@@ -180,7 +178,7 @@ namespace Inicio
             string Nombre;
             float Precio;
             int Cantidad;
-            int Codigo = 1, cod;
+            int cod;
             Console.Clear();
                 Console.Write("--------------------------------------------\n---------------MÓDULO PRODUCTO---------------\n--------------------------------------------\n\n");
                 Console.Write("---------------BIENVENIDO AL MÓDULO PRODUCTO, SELECCIONE SU OPERACIÓN POR FAVOR---------------");
@@ -208,9 +206,9 @@ namespace Inicio
                                 nombre = Nombre,
                                 precio = Precio,
                                 cantidad = Cantidad,
-                                codigo = Codigo
+                                codigo = codigo
                             });
-                            Codigo++;
+                            codigo++;
                             Console.Write("¿Quieres agregar otro producto? R// ");
                             preg = Console.ReadLine();
                         } while (preg.Equals("si"));
@@ -284,6 +282,9 @@ namespace Inicio
                     case "2":
                         ListarProducto();
                         break;
+                    case "3":
+                        ListarEncabezadoFacturas();
+                        break;
                     default:
                         Console.Write("Esa opción no existe en este módulo, rectifique por favor.");
                         break;
@@ -305,6 +306,11 @@ namespace Inicio
             Console.Clear();
             System.Console.WriteLine("--------------------------------------------\n---------------LISTA DE PRODUCTOS REGISTRADOS---------------\n--------------------------------------------\n");
             productoService.ListandoProductos();
+        }
+        public void ListarEncabezadoFacturas (){
+            Console.Clear();
+            System.Console.WriteLine("--------------------------------------------\n---------------LISTA DE PRODUCTOS REGISTRADOS---------------\n--------------------------------------------\n");
+            VentasService.ListandoEncabezadoFactura();
         }
 
         public void switchVentas(int opcionVenta)

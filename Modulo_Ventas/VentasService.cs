@@ -39,9 +39,21 @@ namespace Taller_Poo.Modulo_Ventas
 
             }
             Console.WriteLine($"\nFecha: {fecha}     Cedula cliente: {cc}     Total a Pagar: {totalPI.ToString("N0")}");
-
-
         }
+
+        public void ListandoEncabezadoFactura()
+        {
+            Console.Write("------------------------------------------\n");
+            
+
+            var consulta = listaVentas.ToList();
+            foreach (var ventas in consulta)
+            {
+                Console.WriteLine($"Número de factura: {ventas.codigoFactura}.");
+                Console.WriteLine($"\nFecha: {ventas.fechaFactura}     Cedula cliente: {ventas.cedulaCliente}     Total a Pagar: {ventas.totalPagar.ToString("N0")}");
+            }
+        }
+
 
         public bool ConsultarCodigoFactura(int numFactura)
         {

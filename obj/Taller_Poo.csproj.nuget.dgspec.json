@@ -1,25 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\oscar\\Documents\\.Net\\TALLER_POO\\Taller_Poo\\Taller_Poo.csproj": {}
+    "C:\\Users\\dylan\\Desktop\\sena\\Tercer_trimesttre\\.NET\\TALLER_2\\TallerPoo\\Taller_Poo\\Taller_Poo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\oscar\\Documents\\.Net\\TALLER_POO\\Taller_Poo\\Taller_Poo.csproj": {
+    "C:\\Users\\dylan\\Desktop\\sena\\Tercer_trimesttre\\.NET\\TALLER_2\\TallerPoo\\Taller_Poo\\Taller_Poo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\oscar\\Documents\\.Net\\TALLER_POO\\Taller_Poo\\Taller_Poo.csproj",
+        "projectUniqueName": "C:\\Users\\dylan\\Desktop\\sena\\Tercer_trimesttre\\.NET\\TALLER_2\\TallerPoo\\Taller_Poo\\Taller_Poo.csproj",
         "projectName": "Taller_Poo",
-        "projectPath": "C:\\Users\\oscar\\Documents\\.Net\\TALLER_POO\\Taller_Poo\\Taller_Poo.csproj",
-        "packagesPath": "C:\\Users\\oscar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\oscar\\Documents\\.Net\\TALLER_POO\\Taller_Poo\\obj\\",
+        "projectPath": "C:\\Users\\dylan\\Desktop\\sena\\Tercer_trimesttre\\.NET\\TALLER_2\\TallerPoo\\Taller_Poo\\Taller_Poo.csproj",
+        "packagesPath": "C:\\Users\\dylan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dylan\\Desktop\\sena\\Tercer_trimesttre\\.NET\\TALLER_2\\TallerPoo\\Taller_Poo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\oscar\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\dylan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -27,8 +25,7 @@
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {}
         },
         "frameworks": {
           "net5.0": {
