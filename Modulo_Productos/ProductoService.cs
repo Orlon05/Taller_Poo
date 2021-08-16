@@ -34,9 +34,9 @@ namespace ProductoService
             var producto = listaProducto.FirstOrDefault(producto => producto.codigo.Equals(cod));
 
             if (producto != null)
-                Console.WriteLine($"\nCódigo: {producto.codigo}\nNombre: {producto.nombre}\nPrecio: {producto.precio}\nCantidad: {producto.cantidad}\n");
+                Console.WriteLine($"\nCï¿½digo: {producto.codigo}\nNombre: {producto.nombre}\nPrecio: {producto.precio}\nCantidad: {producto.cantidad}\n");
             else
-                Console.Write("\nNo se encontró una producto con ese código.\n");
+                Console.Write("\nNo se encontrï¿½ una producto con ese cï¿½digo.\n");
 
         }
 
@@ -97,6 +97,15 @@ namespace ProductoService
                     producto.cantidad = (producto.cantidad) - cantidadProduc;
                     total = total + (producto.precio * cantidadProduc);
                 }
+            }
+        }
+
+        public void ListandoProductos(){
+            var consulta = listaProducto.ToList();
+            foreach (var cliente in consulta)
+            {
+                System.Console.WriteLine($"Producto: {cliente.nombre}, Con Codigo: {cliente.codigo} de cantidad: {cliente.cantidad} y precio: {cliente.precio}");
+                System.Console.WriteLine("-------------------------------------------------------------");
             }
         }
 

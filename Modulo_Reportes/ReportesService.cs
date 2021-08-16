@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Taller_Poo.Modulo_Reportes
+
+namespace Modulo_Reportes
 {
+
     class ReportesService
     {
+        
+        
     }
 }

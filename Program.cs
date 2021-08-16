@@ -4,6 +4,7 @@ using Modulo_Productos;
 using System;
 using System.Linq;
 using Taller_Poo.Modulo_Ventas;
+using Modulo_Reportes;
 
 namespace Inicio
 {
@@ -12,8 +13,9 @@ namespace Inicio
         public VentasService venta = new VentasService();
         public ClienteService clienteService = new ClienteService();
         public ProductoService.ProductoService productoService = new ProductoService.ProductoService();
+        public ReportesService reportesService = new ReportesService();
         public VentasService VentasService = new VentasService();
-        public string respuesta, documento,respuestaRV,respuestaV;
+        public string respuesta, documento,respuestaRV,respuestaV, resp = "0";
         public int codigoP, cantidadProduc, codFactura = 1,numM, opcionVenta,numFactura;
         public float total;
 
@@ -60,6 +62,10 @@ namespace Inicio
                     break;
                 case 3:
                     ModVentas();
+                    menuP();
+                    break;
+                case 4:
+                    ModReportes();
                     menuP();
                     break;
                 default:
@@ -261,6 +267,43 @@ namespace Inicio
             opcionVenta = int.Parse(Console.ReadLine());
             switchVentas(opcionVenta);
             SolicitarDocumento();
+        }
+
+        public void ModReportes(){
+            Console.Clear();
+            Console.Write("--------------------------------------------\n---------------MÓDULO REPORTES---------------\n--------------------------------------------\n\n");
+            string preg;
+            do{
+                Console.Write("\n¿Qué operación desea ejecutar en el modulo de reportes?: \nListar Clientes: 1 \nListar Productos: 2 \nListar Facturas: 3\n\nRespuesta: ");
+                string resp = Console.ReadLine();
+                switch(resp){
+                    case "1":
+                        ListarCliente();
+                        break;
+                    case "2":
+                        ListarProducto();
+                        break;
+                    default:
+                        Console.Write("Esa opción no existe en este módulo, rectifique por favor.");
+                        break;
+                }
+                Console.Write("¿Quieres continuar con otra funciòn? R// ");
+                preg = Console.ReadLine();
+
+            }while (preg.Equals("si"));
+            
+            
+        }
+
+        public void ListarCliente (){
+            Console.Clear();
+            System.Console.WriteLine("--------------------------------------------\n---------------LISTA DE CLIENTES REGISTRADOS---------------\n--------------------------------------------\n");
+            clienteService.ListandoClientes();
+        }
+        public void ListarProducto (){
+            Console.Clear();
+            System.Console.WriteLine("--------------------------------------------\n---------------LISTA DE PRODUCTOS REGISTRADOS---------------\n--------------------------------------------\n");
+            productoService.ListandoProductos();
         }
 
         public void switchVentas(int opcionVenta)

@@ -102,5 +102,14 @@ namespace Modulo_Clientes.ClienteService
             }
             return existe;
         }
+
+        public void ListandoClientes(){
+            var consulta = listaClientes.ToList();
+            foreach (var cliente in consulta)
+            {
+                System.Console.WriteLine($"CLIENTE: {cliente.nombre}, Con cedula: {cliente.cedula}, direccion: {cliente.direccion} y telefono: {cliente.telefono}");
+                System.Console.WriteLine("-------------------------------------------------------------");
+            }
+        }
     }
 }
