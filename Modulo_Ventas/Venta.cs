@@ -22,5 +22,20 @@ namespace Taller_Poo.Modulo_Ventas
         public string nombreCliente { get; set; }
         public string direccionCliente { get; set; }
         public string telefonoCliente { get; set; }
+
+        public int subCodigoFactura { get; set; }
+
+        public DateTime subFechaFactura { get; set; }
+
+        public string subNombreProducto { get; set; }
+        public float subPrecioProducto { get; set; }
+        public float subTotalPagar { get; set; }
+        public int subCantidadProducto { get; set; }
+        public int subCodigoProducto { get; set; }
+
+        public string subCedulaCliente { get; set; }
+        public string subNombreCliente { get; set; }
+        public string subDireccionCliente { get; set; }
+        public string subTelefonoCliente { get; set; }
     }
 }
