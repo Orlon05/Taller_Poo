@@ -2,6 +2,7 @@
 using Modulo_Clientes.ClienteService;
 using Modulo_Productos;
 using Taller_Poo.Modulo_Ventas;
+using Modulo_Configuracion;
 using System;
 using System.Linq;
 
@@ -13,7 +14,8 @@ namespace Inicio
         public ClienteService clienteService = new ClienteService();
         public ProductoService.ProductoService productoService = new ProductoService.ProductoService();
         public VentasService VentasService = new VentasService();
-        public string respuesta, documento,respuestaRV,respuestaV, resp = "0";
+        public ConfiguracionService configuracionService = new ConfiguracionService();
+        public string respuesta, documento,respuestaRV,respuestaV, resp = "0", nombreEmpresa=".";
         public int codigoP, cantidadProduc, codFactura = 1,numM, opcionVenta,numFactura,codigo = 1;
         public float total;
         public DateTime fecha;
@@ -40,8 +42,7 @@ namespace Inicio
             Console.Clear();
             
             Console.WriteLine("\n" + DateTime.Now);
-
-            Console.WriteLine("\nInicio\n");
+            configuracionService.CabezeraAplicacion();
             Console.Write("1) Módulo de Clientes.\n2) Módulo de Productos.\n3) Módulo de Venta.\n4) Módulo de Reportes.\n5) Módulo de Configuración.\n\nSeleccione el numero del módulo al que desea ingresar: ");
             numM = int.Parse(Console.ReadLine());
             switchnumM(numM);
@@ -65,6 +66,10 @@ namespace Inicio
                     break;
                 case 4:
                     ModReportes();
+                    menuP();
+                    break;
+                case 5:
+                    ModConfig();
                     menuP();
                     break;
                 default:
@@ -284,6 +289,34 @@ namespace Inicio
                         break;
                     case "3":
                         ListarEncabezadoFacturas();
+                        break;
+                    default:
+                        Console.Write("Esa opción no existe en este módulo, rectifique por favor.");
+                        break;
+                }
+                Console.Write("¿Quieres continuar con otra funciòn? R// ");
+                preg = Console.ReadLine();
+
+            }while (preg.Equals("si"));
+            
+            
+        }
+
+        public void ModConfig(){
+            Console.Clear();
+            Console.Write("--------------------------------------------\n---------------MÓDULO CONFIGURACION---------------\n--------------------------------------------\n\n");
+            string preg;
+            do{
+                Console.Write("\n¿Qué operación desea ejecutar en el modulo de configuracion?: \nNombrar la empresa: 1 \nCrear cliente y productos: 2 \n\nRespuesta: ");
+                string resp = Console.ReadLine();
+                switch(resp){
+                    case "1":
+                        System.Console.Write("Ingrese el nombre: ");
+                        nombreEmpresa = Console.ReadLine();
+                        configuracionService.NombrandoEmpresa(nombreEmpresa);
+                        break;
+                    case "2":
+                        ListarProducto();
                         break;
                     default:
                         Console.Write("Esa opción no existe en este módulo, rectifique por favor.");
