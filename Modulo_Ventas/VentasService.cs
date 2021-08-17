@@ -10,6 +10,8 @@ namespace Taller_Poo.Modulo_Ventas
     class VentasService
     {
         private List<Venta> listaVentas = new List<Venta>();
+        private List<SubVenta> listaSubVentas = new List<SubVenta>();
+        private List<int> coF = new List<int>(); 
         public string aggProducto,cc,clie;
         public float totalPI;
         public DateTime fecha;
@@ -43,16 +45,61 @@ namespace Taller_Poo.Modulo_Ventas
 
         public void ListandoEncabezadoFactura()
         {
-            Console.Write("------------------------------------------\n");
             
-
             var consulta = listaVentas.ToList();
             foreach (var ventas in consulta)
             {
-                Console.WriteLine($"Número de factura: {ventas.codigoFactura}.");
-                Console.WriteLine($"\nFecha: {ventas.fechaFactura}     Cedula cliente: {ventas.cedulaCliente}     Total a Pagar: {ventas.totalPagar.ToString("N0")}");
+                coF.Add(ventas.codigoFactura);
+
+            }
+            subFactura();
+            Console.Write("------------------------------------------\n");
+            impresion();
+
+
+        }
+
+        public void subFactura()
+        {
+            HashSet<int> hashWithoutDuplicates = new HashSet<int>(coF);
+
+            List<int> listWithoutDuplicates = hashWithoutDuplicates.ToList();
+
+            for (int i = 0; i <= (listWithoutDuplicates.Count()-1); i++)
+            {
+                int n = listWithoutDuplicates[i];
+                var cons = listaVentas.LastOrDefault(vent => vent.codigoFactura.Equals(n));
+                if (cons != null)
+                {
+                    AgregarsubVenta(new SubVenta
+                    {
+                        subFechaFactura = cons.fechaFactura,
+                        subCodigoFactura = cons.codigoFactura,
+                        subCedulaCliente = cons.cedulaCliente,
+                        subTotalPagar = cons.totalPagar
+                    });
+                }
             }
         }
+
+        public void impresion()
+        {
+            var consulta = listaSubVentas.ToList();
+            foreach (var subVenta in consulta)
+            {
+                System.Console.WriteLine($"NUMERO FACTURA: {subVenta.subCodigoFactura}, fecha: {subVenta.subFechaFactura}, Cliente: {subVenta.subCedulaCliente}  y Total a pagar: {(subVenta.subTotalPagar).ToString("N0")}");
+                System.Console.WriteLine("-------------------------------------------------------------");
+            }
+
+        }
+       
+
+        public void AgregarsubVenta(SubVenta subventa)
+        {
+            listaSubVentas.Add(subventa);
+        }
+
+
 
 
         public bool ConsultarCodigoFactura(int numFactura)
