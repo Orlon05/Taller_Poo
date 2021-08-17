@@ -1,9 +1,12 @@
 using System;
+using Modulo_Clientes.ClienteService;
+using Modulo_Clientes;
+using System.Text;
 
 namespace Modulo_Configuracion
 {
 
-    class ConfiguracionService
+    public class ConfiguracionService
     {
         private string nombreEmpresa = ". . .";
         public void CabezeraAplicacion(){

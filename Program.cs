@@ -4,6 +4,7 @@ using Modulo_Productos;
 using Taller_Poo.Modulo_Ventas;
 using Modulo_Configuracion;
 using System;
+using System.Text;
 using System.Linq;
 
 namespace Inicio
@@ -316,7 +317,8 @@ namespace Inicio
                         configuracionService.NombrandoEmpresa(nombreEmpresa);
                         break;
                     case "2":
-                        ListarProducto();
+                        GenerandoClientes();
+                        GenerandoProductos();
                         break;
                     default:
                         Console.Write("Esa opción no existe en este módulo, rectifique por favor.");
@@ -328,6 +330,64 @@ namespace Inicio
             }while (preg.Equals("si"));
             
             
+        }
+
+        public void GenerandoClientes(){
+            int longitud = 2;
+            const string numeros = "0123456789";
+            const string abcedario = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const string completo = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            StringBuilder cedula = new StringBuilder();
+            StringBuilder nombre = new StringBuilder();
+            StringBuilder direccion = new StringBuilder();
+            StringBuilder numero = new StringBuilder();
+            Random rnd = new Random();
+            for (int d = 0; d < 10; d++)
+            {
+                for (int i = 0; i < longitud -1; i++)
+            {
+                int indice = rnd.Next(numeros.Length);
+                cedula.Append(numeros[indice]);
+                nombre.Append(abcedario[indice]);
+                direccion.Append(completo[indice]);
+                numero.Append(numeros[indice]);
+            } 
+            clienteService.AgregarCliente(new Cliente{
+                    cedula = cedula.ToString(),
+                    nombre = nombre.ToString(),
+                    direccion = direccion.ToString(),
+                    telefono = numero.ToString()
+                });
+
+            }
+        }
+
+        public void GenerandoProductos(){
+            int longitud = 1;
+            const string numeros = "0123456789";
+            StringBuilder codigo = new StringBuilder();
+            StringBuilder nombre = new StringBuilder();
+            StringBuilder precio = new StringBuilder();
+            StringBuilder cantidad = new StringBuilder();
+            Random rnd = new Random();
+            for (int d = 0; d < 10; d++)
+            {
+                for (int i = 0; i < longitud ; i++)
+            {
+                int indice = rnd.Next(numeros.Length);
+                codigo.Append(numeros[indice]);
+                nombre.Append(numeros[indice]);
+                precio.Append(numeros[indice]);
+                cantidad.Append(numeros[indice]);
+            } 
+            productoService.AgregarProducto(new Producto{
+                    codigo = int.Parse(codigo.ToString()),
+                    nombre = "AA" + nombre.ToString(),
+                    precio =  float.Parse(precio.ToString()) * 2,
+                    cantidad = int.Parse(cantidad.ToString() ) / 5
+                });
+
+            }
         }
 
         public void ListarCliente (){
