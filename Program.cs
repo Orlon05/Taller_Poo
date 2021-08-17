@@ -461,6 +461,8 @@ namespace Inicio
             {
                 total = productoService.total;
                 VentasService.imprimirEncabezadoFactura(codFactura);
+                cantidadProduc = 0;
+                productoService.total = 0;
             }
         }
         public void validarCanti(int cantidadProduc, int codigoP)
